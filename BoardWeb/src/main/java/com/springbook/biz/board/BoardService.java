@@ -4,9 +4,11 @@ import java.util.List;
 
 public interface BoardService {
 
-	public void insertBoard();
-	public void updateBoard();
-	public void deleteBoard();
-	public BoardVO getBoard();
-	public List<BoardVO> getBoardList();
+	 void insertBoard(BoardVO vo);
+	 void updateBoard(BoardVO vo);
+	 void deleteBoard(BoardVO vo);
+	 BoardVO getBoard(BoardVO vo);
+	 List<BoardVO> getBoardList();
+	 
+	 void createtable();
 }

@@ -3,13 +3,26 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd">
 
-	<!-- 방법1 어노테이션이용 -->
-	<context:component-scan base-package="com.springbook.biz.polymorphism"></context:component-scan>
+
+
+	<!-- IoC방법1 어노테이션이용 -->
+	<context:component-scan base-package="com.springbook.biz.*"></context:component-scan>
 	
-	<!-- 방법2 xml에 직접설정 -->
+	<!-- AOP -->
+	<bean id="log" class="com.springbook.biz.common.LogAdvice"></bean>
+	<aop:config>
+		<aop:pointcut id="allPointcut" expression="execution(* com.springbook.biz..*Impl.*(..))"/>
+		<aop:aspect ref="log">
+			<aop:before pointcut-ref="allPointcut" method="printLog"/>
+		</aop:aspect>
+	</aop:config>
+	
+	<!-- IoC방법2 xml에 직접설정 -->
 	<!-- 
 	<bean id="tv" class="com.springbook.biz.polymorphism.SamsungTV">
 		<property name="speaker" ref="apple"></property>
