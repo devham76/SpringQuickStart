@@ -7,9 +7,10 @@
 <% 
 	// 1. 사용자 입력 정보추출(검색 기능은 나주에 구현)
 	// 2. DB 연동 처리
-	BoardDAOSpring boardDao = new BoardDAOSpring();
+	//BoardDAOSpring boardDao = new BoardDAOSpring();
+	BoardDAO boardDao = new BoardDAO();
 	// 테이블 생성
-	boardDao.createtable();
+	//boardDao.createtable();
 	// 임시글 작성
 	BoardVO vo = new BoardVO();
 	vo.setTitle("제목 테스트얌");
@@ -25,7 +26,7 @@
 <body>
 <center>
 	<h1>글 목록</h1>
-	<h3>테스트님 환영합니다...<a href="logout_proc.jsp">로그 아웃</h3>
+	<h3>테스트님 환영합니다...<a href="logout_proc.jsp">로그 아웃</a></h3>
 	
 	<!-- 검색 시작 -->
 	<form action=getBoardList.jsp method="POST">
