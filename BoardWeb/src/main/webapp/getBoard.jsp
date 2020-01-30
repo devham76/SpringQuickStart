@@ -25,7 +25,8 @@
 <body>
 <center>
 <h1>±Û »ó¼¼</h1>
-<a href="logout_proc.jsp">·Î±×¾Æ¿ô</a>
+<a href="logout_proc.jsp">·Î±×¾Æ¿ô(mvc1)</a> &nbsp;
+<a href="logout.do">·Î±×¾Æ¿ô(mvc2)</a>
 <hr>
 <form action="updateBoard_proc.jsp" method="post">
 	<input type=hidden name=seq value=<%=boardVo.getCnt() %> />

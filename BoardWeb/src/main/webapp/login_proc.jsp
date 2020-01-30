@@ -3,6 +3,12 @@
 <%@page import="com.springbook.biz.user.impl.UserDAO"%>
 <%@page import="com.springbook.biz.user.UserVO"%>
 <% 
+
+/*
+	MVC1 : controller + view 가 JSP에 있었다
+	MVC2 : java 부분을 controller로써  DispathcerServlet.java로 빼서 JSP에는 view만 있도록한다 !
+
+*/
 	//-- 로그인 프로세스 
 	// 1. 사용자 입력 정보 추출
 	String id = request.getParameter("id");

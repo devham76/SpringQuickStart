@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
+
 import com.springbook.biz.user.UserVO;
 
 @Repository // 按眉 积己
@@ -37,6 +38,7 @@ public class UserDAO{
 	public UserVO getUser(UserVO vo) {
 		System.out.println("==>SPRING JDBC肺 getUser() 扁瓷 贸府");
 		Object[] args = {vo.getId(), vo.getPassword()};
+		System.out.println(vo.getId()+", "+vo.getPassword());
 		return jdbcTemplate.queryForObject(USER_GET, args, new UserRowMapper());
 	}
 }

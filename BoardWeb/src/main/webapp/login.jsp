@@ -52,7 +52,8 @@ body {
 </style>
 </head>
 <body class="text-center">
-	<form class="form-signin" method="post" action="login_proc.jsp">
+	<!--form class="form-signin" method="post" action="login_proc.jsp"  == MVC1 -->
+	<form class="form-signin" method="post" action="login.do">
 		<h1 class="h3 mb-3 font-weight-normal"></h1>
 		
 		<label for="inputEmail" class="sr-only">아이디</label> 
