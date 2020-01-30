@@ -10,8 +10,8 @@ public class JDBCUtill {
 	// DB¿¬°á 
 	public static Connection getConnection() {
 		try {
-			Class.forName("org.h2.Driver");
-			return DriverManager.getConnection("jdbc:h2:mem:testdb;", "sa", "");
+			Class.forName ("org.h2.Driver"); 
+			return DriverManager.getConnection("jdbc:h2:mem:testdb", "sa", "");
 		}catch(Exception e) {
 			System.out.println("error");
 			e.printStackTrace();

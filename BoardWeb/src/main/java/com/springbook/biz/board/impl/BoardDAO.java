@@ -55,11 +55,12 @@ public class BoardDAO {
 		System.out.println("==>JDBC로 insertBoard() 기능 처리");
 		try{
 			conn = JDBCUtill.getConnection();
+			System.out.println("conn : "+conn);
 			stmt = conn.prepareStatement(BOARD_INSERT);
 			stmt.setString(1, vo.getTitle());
 			stmt.setString(2, vo.getWriter());
 			stmt.setString(3, vo.getContent());
-			System.out.println("~~~>>"+stmt.executeUpdate());
+			stmt.executeUpdate();
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {

@@ -15,9 +15,9 @@ public class BoardServiceClient {
 		// 2. Spring 컨테이너로부터 BoardServiceImpl 객체를 요청(Lookup)한다.
 		BoardService boardService = (BoardService) container.getBean("boardService");
 		
-		//boardService.createtable();
+		//-- 테이블 생성 테스트 
+		boardService.createtable();
 		
-
 		// 3. 글 등록 기능 테스트
 		BoardVO vo = new BoardVO();
 		vo.setTitle("제목 테스트얌");

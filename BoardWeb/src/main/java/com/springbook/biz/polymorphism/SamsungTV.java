@@ -19,7 +19,7 @@ public class SamsungTV implements TV{
 	private int price;
 	
 	public SamsungTV() {
-		System.out.println("SamsungTV(1) 梓端 持失");
+		//System.out.println("SamsungTV(1) 梓端 持失");
 	}
 	
 	public void setSpeaker(Speaker speaker) {
