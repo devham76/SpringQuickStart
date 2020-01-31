@@ -3,17 +3,7 @@
 <%@page import="com.springbook.biz.board.impl.BoardDAO" %>    
 <%@page import="com.springbook.biz.board.BoardVO" %>      
 <%
-	// 1. 검색할 게시글 번호 추출
-	String seq = request.getParameter("seq");
-
-	// 2. DB연동
-	BoardVO vo = new BoardVO();
-	vo.setSeq(Integer.parseInt(seq));
-	
-	BoardDAO boardDao = new BoardDAO();
-	BoardVO boardVo = boardDao.getBoard(vo);
-	
-	// 3. 응답화면
+	BoardVO boardVo = (BoardVO) session.getAttribute("board"); 
 %>
 
 <!DOCTYPE html>
@@ -28,7 +18,7 @@
 <a href="logout_proc.jsp">로그아웃(mvc1)</a> &nbsp;
 <a href="logout.do">로그아웃(mvc2)</a>
 <hr>
-<form action="updateBoard_proc.jsp" method="post">
+<form action="updateBoard.do" method="post">
 	<input type=hidden name=seq value=<%=boardVo.getCnt() %> />
 	<table>
 		<tr>
@@ -58,8 +48,8 @@
 </form>
 <hr>
 <a href="insertBoaard.jsp">글 등록</a>&nbsp;
-<a href="deleteBoard.jsp">글 삭제</a>&nbsp;
-<a href="getBoardList.jsp">글 목록</a>&nbsp;
+<a href="deleteBoard.do">글 삭제</a>&nbsp;
+<a href="getBoardList.do">글 목록</a>&nbsp;
 </center>
 </body>
 </html>

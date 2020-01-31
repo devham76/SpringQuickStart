@@ -5,23 +5,8 @@
 <%@page import="com.springbook.biz.board.*" %>
 
 <% 
-	// 1. 사용자 입력 정보추출(검색 기능은 나주에 구현)
-	// 2. DB 연동 처리
-	//BoardDAOSpring boardDao = new BoardDAOSpring();
-	BoardDAO boardDao = new BoardDAO();
-	// 테이블 생성
-	//boardDao.createtable();
-	// 임시글 작성
-	BoardVO vo = new BoardVO();
-	vo.setTitle("제목 테스트얌");
-	vo.setWriter("이혜미");
-	vo.setContent("임시 내용이라능 spring boot 뿌셔버리자능~~");
-	boardDao.insertBoard(vo);
-	
-	List<BoardVO> boardList = boardDao.getBoardList();
-	
-	// 3. 응답 화면 구성
-
+	// 세션에 저장된 글 목록을 꺼낸다
+	List<BoardVO> boardList = (List)session.getAttribute("boardList");
 %>
 <body>
 <center>
@@ -54,10 +39,10 @@
 			<td>조회수</td>
 		</tr>
 	
-	<% for(BoardVO board : boardList) { %>
+	<%  for(BoardVO board : boardList) { %>
 	<tr>
 		<td><%=board.getSeq() %></td>
-		<td><a href="getBoard.jsp?seq=<%board.getSeq(); %>">
+		<td><a href="getBoard.do?seq=<%board.getSeq(); %>">
 				<%=board.getTitle() %>
 			</a> 
 		</td>

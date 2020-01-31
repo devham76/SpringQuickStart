@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee https://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+	<!-- 인코딩 처리 -->
+	<filter>
+		<filter-name>characterEncoding</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-parm>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-parm>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>characterEncoding</filter-name>
+		<url-pattern>*.do</url-pattern>
+	</filter-mapping>
+	
   <servlet>
     <description></description>
     <display-name>DispatcherServlet</display-name>
@@ -12,7 +27,15 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>action</servlet-name>
-    <servlet-class>com.springbook.view.controller.DispatcherServlet</servlet-class>
+    <!-- 
+    	모든 클라이언트의 요청을 가장 먼저 받아들이는곳 설정
+     servlet-class>com.springbook.view.controller.DispatcherServlet</servlet-class-->
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <!-- 설정파일 위치 -->
+    <init-param>
+    	<param-name>contextConfigLoction</param-name>
+   		<param-value>/WEB-INF/config/presentation-layer.xml</param-value>
+    </init-param>
   </servlet>
   <servlet-mapping>
     <servlet-name>action</servlet-name>
