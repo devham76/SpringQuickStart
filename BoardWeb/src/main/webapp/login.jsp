@@ -57,10 +57,10 @@ body {
 		<h1 class="h3 mb-3 font-weight-normal"></h1>
 		
 		<label for="inputEmail" class="sr-only">아이디</label> 
-		<input type="text" name="id" class="form-control" placeholder="아이디" requiredautofocus value="">
+		<input type="text" name="id" class="form-control" placeholder="아이디" requiredautofocus value="${userVO.id}">
 		
 		<label for="inputPassword" class="sr-only">비밀번호</label> 
-		<input type="password" name="password" class="form-control" placeholder="비밀번호" required>
+		<input type="password" name="password" class="form-control" placeholder="비밀번호" value="${userVO.password}" required>
 		
 		<button class="btn btn-primary btn-block" type="submit">로그인</button>
 	</form>

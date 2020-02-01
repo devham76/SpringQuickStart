@@ -25,18 +25,16 @@
     <servlet-name>DispatcherServlet</servlet-name>
     <url-pattern>/DispatcherServlet</url-pattern>
   </servlet-mapping>
+  
   <servlet>
     <servlet-name>action</servlet-name>
-    <!-- 
-    	모든 클라이언트의 요청을 가장 먼저 받아들이는곳 설정
-     servlet-class>com.springbook.view.controller.DispatcherServlet</servlet-class-->
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-    <!-- 설정파일 위치 -->
     <init-param>
-    	<param-name>contextConfigLoction</param-name>
+    	<param-name>contextConfigLocation</param-name>
    		<param-value>/WEB-INF/config/presentation-layer.xml</param-value>
     </init-param>
   </servlet>
+  
   <servlet-mapping>
     <servlet-name>action</servlet-name>
     <url-pattern>*.do</url-pattern>
