@@ -18,7 +18,7 @@
 <a href="logout_proc.jsp">로그아웃(mvc1)</a> &nbsp;
 <a href="logout.do">로그아웃(mvc2)</a>
 <hr>
-<form action="insertBoard.dos" method="post">
+<form action="insertBoard.do" method="post" enctype="multipart/form-data">
 	<table>
 		<tr>
 			<td>제목</td>
@@ -32,7 +32,10 @@
 			<td>내용</td>
 			<td><textarea type=text name=content></textarea></td>
 		</tr>
-
+		<tr>
+			<td>업로드</td>
+			<td><input type=file name="uploadFile" /></td>
+		</tr>
 		<tr>
 			<td colspan=2> <input type=submit value="글 등록" /></td>
 		</tr>

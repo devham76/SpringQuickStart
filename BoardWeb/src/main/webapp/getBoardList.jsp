@@ -14,7 +14,7 @@
 	<h3>${userName}님 환영합니다...<a href="logout_proc.jsp">로그 아웃</a></h3>
 	
 	<!-- 검색 시작 -->
-	<form action=getBoardList.jsp method="POST">
+	<form action=getBoardList.do method="POST">
 		<table width=700> 
 		<tr>
 			<td aling=right>

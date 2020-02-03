@@ -35,6 +35,10 @@ public class BoardDAOSpring {
 			"					cnt number(5) default 0" + 
 			"					)";
 	
+	private final String BOARD_LIST_T = "select * from board where title like '%'||?||'%' order by seq desc";
+	private final String BOARD_LIST_C = "select * from board where content like '%'||?||'%' order by seq desc";
+	
+	
 	public void createtable() {
 		System.out.println("==>SPRING JDBC로 createtable() 기능 처리");
 		jdbcTemplate.execute(BOARD_CREATE);
@@ -59,14 +63,22 @@ public class BoardDAOSpring {
 	}
 	// 글 상세 조회
 	public BoardVO getBoard(BoardVO vo) {
-		System.out.println("==>SPRING JDBC로 getBoard() 기능 처리");
+		System.out.println("==>SPRING JDBC로 getBoard() 기능 처리");		
 		Object[] args = {vo.getSeq()};
 		return jdbcTemplate.queryForObject(BOARD_GET, args, new BoardRowMapper());
 	}
 	// 글 목록 조회
-	public List<BoardVO> getBoardList() {
+	public List<BoardVO> getBoardList(BoardVO vo) {
 		System.out.println("==>SPRING JDBC로 getBoardList() 기능 처리");
-		return jdbcTemplate.query(BOARD_LIST, new BoardRowMapper());
+		String query="";
+		if (vo.getSearchCondition().equals("TITLE"))
+			query = BOARD_LIST_T;
+		else if (vo.getSearchCondition().equals("CONTENT"))
+			query = BOARD_LIST_C;
+		
+		//return jdbcTemplate.queryForObject(BOARD_GET, args, new BoardRowMapper());
+		Object[] args = {vo.getSearchKeyword()};
+		return jdbcTemplate.query(query, args, new BoardRowMapper());
 	}
 }
 class BoardRowMapper implements RowMapper<BoardVO>{
