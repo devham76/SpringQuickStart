@@ -16,10 +16,10 @@
 	<filter>
 		<filter-name>characterEncoding</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
-		<init-parm>
+		<init-param>
 			<param-name>encoding</param-name>
 			<param-value>UTF-8</param-value>
-		</init-parm>
+		</init-param>
 	</filter>
 	
 	<filter-mapping>

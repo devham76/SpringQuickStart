@@ -4,6 +4,8 @@ import java.sql.Date;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 // BoardDTO와 같다. entity
 public class BoardVO {
 	
@@ -56,13 +58,15 @@ public class BoardVO {
 	}
 	
 	
-	
+	@JsonIgnore	// 자바 객체를 JSON을 변환할때, 특정 변수를 변환에서 제외시킨다 / GETTER메소드 위에서만 설정해야한다.
 	public String getSearchCondition() {
 		return searchCondition;
 	}
 	public void setSearchCondition(String searchCondition) {
 		this.searchCondition = searchCondition;
 	}
+	
+	@JsonIgnore
 	public String getSearchKeyword() {
 		return searchKeyword;
 	}
@@ -70,7 +74,7 @@ public class BoardVO {
 		this.searchKeyword = searchKeyword;
 	}
 	
-	
+	@JsonIgnore
 	public MultipartFile getUploadFile() {
 		return uploadFile;
 	}

@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -27,16 +28,28 @@ public class BoardController {
 	@Autowired
 	private BoardService boardService;
 	
+	@RequestMapping("/dataTransform.do")
+	@ResponseBody	// 자바 객체를 Http 응답 프로토콜의 몸체로 변환하기 위해 상용된다. / 해당 메소드의 실행결과는 JSON으로 변환되어 HTTP응답바디에 설정된다
+	public List<BoardVO> dataTransform(BoardVO vo){
+		boardService.createtable();
+		vo.setSearchCondition("TITLE");
+		vo.setSearchKeyword("");
+		List<BoardVO> boardList = boardService.getBoardList(vo);
+		return boardList;
+	}
+	
+	
 //	@RequestMapping("/getBoard.do")
 //	public String getBoard(BoardVO vo, BoardDAO boardDao, Model model) {
 //		System.out.println("글 상세보기 처리");
 //		model.addAttribute("board", boardDao.getBoard(vo));		// Model 정보 저장
 //		return "getBoard.jsp";	// 이동할 View는 String으로 처리
 //	}
+	
 	@RequestMapping("/getBoard.do")
-	public String getBoard(BoardVO vo) {
+	public String getBoard(BoardVO vo, Model model) {
 		System.out.println("글 상세보기 처리");
-		boardService.getBoard(vo);
+		model.addAttribute("board", boardService.getBoard(vo));
 		return "getBoard.jsp";	// 이동할 View는 String으로 처리
 	}
 	
@@ -53,7 +66,7 @@ public class BoardController {
 	public String getBoardList(BoardVO vo, Model model) {
 		// 매개변수로 선언하면 컨테이너가 자동으로 객체생성해준다
 		System.out.println("글 목록 가져오기 처리");
-		boardService.createtable();
+		//boardService.createtable();
 		// null check
 		if (vo.getSearchCondition() == null) vo.setSearchCondition("TITLE");
 		if (vo.getSearchKeyword() == null) vo.setSearchKeyword("");
